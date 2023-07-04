@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GuiSO_GUI.View.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+            
+            <Label
+                Text="Menú de configuración del Sistema Operativo"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+            
+            <VerticalStackLayout
+                Padding="100,0,100,0">
+                
+                <Button
+                    x:Name="ListarUsuariosBtn"
+                    Text="Listar Usuarios"
+                    SemanticProperties.Hint="Acceder al menú de listar usuarios"
+                    Clicked="ListarUsuariosBtn_OnClicked"
+                    HorizontalOptions="Fill" />
+            
+                <Button
+                    x:Name="ConsultarProcesosBtn"
+                    Text="Consultar Procesos"
+                    SemanticProperties.Hint="Acceder al menú de consultar procesos"
+                    Clicked="ConsultarProcesosBtn_OnClicked"
+                    HorizontalOptions="Fill" />
+            
+                <Button
+                    x:Name="RealizarRespaldoBtn"
+                    Text="Realizar Respaldo"
+                    SemanticProperties.Hint="Acceder al menú de realizar respaldo"
+                    Clicked="RealizarRespaldoBtn_OnClicked"
+                    HorizontalOptions="Fill" />
+            
+                <Button
+                    x:Name="SalirBtn"
+                    Text="Salir"
+                    SemanticProperties.Hint="Salir del programa"
+                    Clicked="SalirBtn_OnClicked"
+                    HorizontalOptions="Fill" />
+                
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

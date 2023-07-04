@@ -2,29 +2,65 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GuiSO_GUI.View.ProcesosPage">
+             xmlns:model="clr-namespace:GuiSO_GUI.Model"
+             xmlns:viewmodel="clr-namespace:GuiSO_GUI.ViewModel"
+             x:Class="GuiSO_GUI.View.ProcesosPage"
+             x:DataType="viewmodel:ProcesosViewModel"
+             Title="{Binding Title}">
     <ContentPage.Content>
+        
         <VerticalStackLayout
-            Spacing="25"
-            Padding="30, 0"
-            VerticalOptions="Center">
+            Padding="0, 20, 0,0">
             
             <Label
-                Text="Proceso1"
-                SemanticProperties.HeadingLevel="Level3"
-                VerticalOptions="Center"
-                FontSize="20"/>
-            <Label
-                Text="Proceso2"
-                SemanticProperties.HeadingLevel="Level3"
-                VerticalOptions="Center"
-                FontSize="20"/>
-            <Label
-                Text="Proceso3"
-                SemanticProperties.HeadingLevel="Level3"
-                VerticalOptions="Center"
-                FontSize="20"/>
+                Text="Usuarios del Sistema"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+            
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="10"
+                RowDefinitions="*,Auto"
+                RowSpacing="0">
+                
+                <CollectionView
+                    Grid.ColumnSpan="2"
+                    ItemsSource="{Binding ProcesoModels}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:ProcesoModel">
+                            <Grid Padding="10">
+                                <Frame HeightRequest="125">
+                                    <Grid Padding="0" ColumnDefinitions="125,*" VerticalOptions="Center">
+                                        <Image Aspect="AspectFill" Source="gear.png"
+                                               WidthRequest="50"
+                                               HeightRequest="50"/>
+                                        <VerticalStackLayout
+                                            VerticalOptions="Center"
+                                            Grid.Column="1"
+                                            Padding="10">
+                                            <Label Text="{Binding NombreText}"/>
+                                            <Label Text="{Binding PidText}"/>
+                                            <Label Text="{Binding CpuText}"/>
+                                            <Label Text="{Binding EstadoText}"/>
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            
+            </Grid>
+            
+            <Button Text="Actualizar Lista" 
+                    Command="{Binding GetProcesosCommand}"
+                    IsEnabled="{Binding IsNotBusy}"
+                    Margin="20"
+                    Padding="20"
+                    HorizontalOptions="Center"/>
             
         </VerticalStackLayout>
+        
     </ContentPage.Content>
 </ContentPage>

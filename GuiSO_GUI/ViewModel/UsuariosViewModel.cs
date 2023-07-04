@@ -35,7 +35,7 @@ public partial class UsuariosViewModel : BaseViewModel
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Unable to get monkeys: {ex.Message}");
+            Console.WriteLine($"No se pudo obtener los usuarios: {ex.Message}");
             await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
         }
         finally

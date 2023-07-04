@@ -31,6 +31,9 @@ public static class MauiProgram
         builder.Services.AddSingleton<ProcesosService>();
         builder.Services.AddSingleton<ProcesosViewModel>();
 
+        builder.Services.AddSingleton<RespaldoPage>();
+        builder.Services.AddSingleton<RespaldoViewModel>();
+
         return builder.Build();
     }
 }

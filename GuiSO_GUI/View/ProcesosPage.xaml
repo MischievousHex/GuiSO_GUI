@@ -31,7 +31,10 @@
                         <DataTemplate x:DataType="model:ProcesoModel">
                             <Grid Padding="10">
                                 <Frame HeightRequest="125">
-                                    <Grid Padding="0" ColumnDefinitions="125,*">
+                                    <Grid Padding="0" ColumnDefinitions="125,*" VerticalOptions="Center">
+                                        <Image Aspect="AspectFill" Source="gear.png"
+                                               WidthRequest="50"
+                                               HeightRequest="50"/>
                                         <VerticalStackLayout
                                             VerticalOptions="Center"
                                             Grid.Column="1"

@@ -42,4 +42,35 @@ public partial class RespaldoViewModel : BaseViewModel
             IsBusy = false;
         }
     }
+
+    [RelayCommand]
+    async Task BackUpUsuarios(UsuarioModel model)
+    {
+        if(IsBusy)
+            return;
+
+        try
+        {
+            IsBusy = true;
+            foreach (var usuarioModel in UsuarioModels)
+            {
+                if (usuarioModel.IsBackUpQueued)
+                {
+                    usuarioModel.IsBackedUp = true;
+                }
+            }
+
+            IsBusy = false;
+            await GetBackedUpUsuarios();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"No se pudo hacer el respaldo: {ex.Message}");
+            await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
 }

@@ -8,6 +8,7 @@ public class UsuarioModel
     public string Imagen { get; set; }
     public string[] Grupos { get; set; }
     public string UltimaFechaAcceso { get; set; }
+    public bool IsBackUpQueued { get; set; }
     
     public UsuarioModel(string nombre, bool isBackedUp, string[] grupos, string ultimaFechaAcceso)
     {
@@ -16,6 +17,7 @@ public class UsuarioModel
         Imagen = "pochy.jpg";
         Grupos = grupos;
         UltimaFechaAcceso = ultimaFechaAcceso;
+        IsBackedUp = false;
     }
     
     public string MessageBackedUp{

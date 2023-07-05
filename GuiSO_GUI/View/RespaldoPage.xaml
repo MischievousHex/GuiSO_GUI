@@ -46,6 +46,7 @@
                                             Grid.Column="2">
                                             <Label Text="¿Respaldar?"/>
                                             <CheckBox
+                                                HorizontalOptions="Center"
                                                 IsChecked="{Binding IsBackUpQueued}"/>
                                         </VerticalStackLayout>
                                     </Grid>

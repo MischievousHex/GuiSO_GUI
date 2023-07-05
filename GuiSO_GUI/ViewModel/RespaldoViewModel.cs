@@ -57,6 +57,7 @@ public partial class RespaldoViewModel : BaseViewModel
                 if (usuarioModel.IsBackUpQueued)
                 {
                     usuarioModel.IsBackedUp = true;
+                    usuarioModel.IsBackUpQueued = false;
                 }
             }
 

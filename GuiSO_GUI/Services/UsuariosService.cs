@@ -6,7 +6,7 @@ namespace GuiSO_GUI.Services;
 
 public class UsuariosService
 {
-    private List<UsuarioModel> _usuarioModels { get; }
+    public List<UsuarioModel> _usuarioModels { get; }
 
     public UsuariosService()
     {

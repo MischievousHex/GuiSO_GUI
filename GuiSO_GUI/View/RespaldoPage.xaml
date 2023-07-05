@@ -31,7 +31,7 @@
                         <DataTemplate x:DataType="model:UsuarioModel">
                             <Grid Padding="10">
                                 <Frame HeightRequest="125">
-                                    <Grid Padding="0" ColumnDefinitions="125,*">
+                                    <Grid Padding="0" ColumnDefinitions="125,*,125">
                                         <Image Aspect="AspectFill" Source="{Binding Imagen}"
                                                WidthRequest="125"
                                                HeightRequest="125"/>
@@ -42,6 +42,13 @@
                                             <Label Text="{Binding Nombre}" />
                                             <Label Text="{Binding MessageBackedUp}" />
                                         </VerticalStackLayout>
+                                        <VerticalStackLayout
+                                            Grid.Column="2">
+                                            <Label Text="¿Respaldar?"/>
+                                            <CheckBox
+                                                HorizontalOptions="Center"
+                                                IsChecked="{Binding IsBackUpQueued}"/>
+                                        </VerticalStackLayout>
                                     </Grid>
                                 </Frame>
                             </Grid>
@@ -50,13 +57,23 @@
                 </CollectionView>
             
             </Grid>
+            <HorizontalStackLayout
+                Padding="20"
+                HorizontalOptions="Center">
+                
+                <Button Text="Actualizar Lista" 
+                        Command="{Binding GetBackedUpUsuariosCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Margin="20"
+                        HorizontalOptions="Center"/>
             
-            <Button Text="Actualizar Lista" 
-                    Command="{Binding GetBackedUpUsuariosCommand}"
-                    IsEnabled="{Binding IsNotBusy}"
-                    Margin="20"
-                    Padding="20"
-                    HorizontalOptions="Center"/>
+                <Button Text="Respaldar Seleccionados" 
+                        Command="{Binding BackUpUsuariosCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Margin="20"
+                        HorizontalOptions="Center"/>
+                
+            </HorizontalStackLayout>
             
         </VerticalStackLayout>
         

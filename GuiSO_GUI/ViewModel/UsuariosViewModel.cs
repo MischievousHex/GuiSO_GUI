@@ -24,10 +24,10 @@ public partial class UsuariosViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            var usuarios = await _usuariosService.GetUsuarios();
-
-            if(UsuarioModels.Count != 0)
-                UsuarioModels.Clear();
+            //var usuarios = await _usuariosService.GetUsuarios();
+            var usuarios = _usuariosService._usuarioModels;
+            
+            UsuarioModels.Clear();
                 
             foreach(var monkey in usuarios)
                 UsuarioModels.Add(monkey);

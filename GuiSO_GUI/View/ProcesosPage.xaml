@@ -13,7 +13,7 @@
             Padding="0, 20, 0,0">
             
             <Label
-                Text="Usuarios del Sistema"
+                Text="Procesos del Sistema"
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="32"
                 HorizontalOptions="Center" />
@@ -40,7 +40,7 @@
                                             Grid.Column="1"
                                             Padding="10">
                                             <Label Text="{Binding NombreText}"/>
-                                            <Label Text="{Binding PidText}"/>
+                                            <Label Text="{Binding PIdText}"/>
                                             <Label Text="{Binding CpuText}"/>
                                             <Label Text="{Binding EstadoText}"/>
                                         </VerticalStackLayout>

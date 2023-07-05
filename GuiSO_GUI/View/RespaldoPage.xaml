@@ -2,43 +2,63 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GuiSO_GUI.View.RespaldoPage">
+             xmlns:model="clr-namespace:GuiSO_GUI.Model"
+             xmlns:viewmodel="clr-namespace:GuiSO_GUI.ViewModel"
+             x:Class="GuiSO_GUI.View.RespaldoPage"
+             x:DataType="viewmodel:RespaldoViewModel"
+             Title="{Binding Title}">
     <ContentPage.Content>
+        
         <VerticalStackLayout
-            Spacing="25"
-            Padding="30, 0"
-            VerticalOptions="Center">
+            Padding="0, 20, 0,0">
             
             <Label
-                Text="Realizar respaldo"
+                Text="Usuarios No-Respaldados"
                 SemanticProperties.HeadingLevel="Level1"
-                FontSize="24"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-            />
+                FontSize="32"
+                HorizontalOptions="Center" />
             
-            <HorizontalStackLayout
-                Spacing="25"
-                Padding="30, 30"
-                HorizontalOptions="Center"
-                VerticalOptions="Center">
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="10"
+                RowDefinitions="*,Auto"
+                RowSpacing="0">
                 
-                <Button
-                    x:Name="RealizarRespaldoBtn"
-                    Text="Aceptar"
-                    SemanticProperties.Hint="Realizar un respaldo"
-                    Clicked="RealizarRespaldoBtn_OnClicked"
-                    HorizontalOptions="Fill" />
-
-                <Button
-                    x:Name="CancelarRespaldoBtn"
-                    Text="Cancelar"
-                    SemanticProperties.Hint="Cancelar el respaldo"
-                    Clicked="CancelarRespaldoBtn_OnClicked"
-                    HorizontalOptions="Fill" />
-                
-            </HorizontalStackLayout>
+                <CollectionView
+                    Grid.ColumnSpan="2"
+                    ItemsSource="{Binding UsuarioModels}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:UsuarioModel">
+                            <Grid Padding="10">
+                                <Frame HeightRequest="125">
+                                    <Grid Padding="0" ColumnDefinitions="125,*">
+                                        <Image Aspect="AspectFill" Source="{Binding Imagen}"
+                                               WidthRequest="125"
+                                               HeightRequest="125"/>
+                                        <VerticalStackLayout
+                                            VerticalOptions="Center"
+                                            Grid.Column="1"
+                                            Padding="10">
+                                            <Label Text="{Binding Nombre}" />
+                                            <Label Text="{Binding MessageBackedUp}" />
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            
+            </Grid>
+            
+            <Button Text="Actualizar Lista" 
+                    Command="{Binding GetBackedUpUsuariosCommand}"
+                    IsEnabled="{Binding IsNotBusy}"
+                    Margin="20"
+                    Padding="20"
+                    HorizontalOptions="Center"/>
             
         </VerticalStackLayout>
+        
     </ContentPage.Content>
 </ContentPage>

@@ -5,18 +5,17 @@ using GuiSO_GUI.Services;
 
 namespace GuiSO_GUI.ViewModel;
 
-public partial class UsuariosViewModel : BaseViewModel
+public partial class RespaldoViewModel : BaseViewModel
 {
-    
     public ObservableCollection<UsuarioModel> UsuarioModels { get; } = new();
     private UsuariosService _usuariosService;
 
-    public UsuariosViewModel(UsuariosService usuarioService){
+    public RespaldoViewModel(UsuariosService usuarioService){
         _usuariosService = usuarioService;
     }
 
     [RelayCommand]
-    async Task GetUsuarios()
+    async Task GetBackedUpUsuarios()
     {
         if (IsBusy)
             return;
@@ -24,7 +23,7 @@ public partial class UsuariosViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            var usuarios = await _usuariosService.GetUsuarios();
+            var usuarios = await _usuariosService.GetBackedUpUsuarios();
 
             if(UsuarioModels.Count != 0)
                 UsuarioModels.Clear();

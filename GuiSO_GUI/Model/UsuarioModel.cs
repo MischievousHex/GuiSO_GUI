@@ -21,5 +21,9 @@ public class UsuarioModel
         this.Imagen = "https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/baboon.jpg";
         this.IsBackedUp = isBackedUp;
     }
-    
+
+    public override string ToString()
+    {
+        return $"{nameof(Nombre)}: {Nombre}, {nameof(IsBackedUp)}: {IsBackedUp}, {nameof(Imagen)}: {Imagen}, {nameof(MessageBackedUp)}: {MessageBackedUp}";
+    }
 }

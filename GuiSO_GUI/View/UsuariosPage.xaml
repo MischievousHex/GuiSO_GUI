@@ -28,18 +28,35 @@
                     ItemsSource="{Binding UsuarioModels}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:UsuarioModel">
-                            <Grid Padding="10">
+                            <Grid Padding="0">
                                 <Frame HeightRequest="125">
-                                    <Grid Padding="0" ColumnDefinitions="125,*">
+                                    <Grid Padding="0" ColumnDefinitions="125,205,*,125">
                                         <Image Aspect="AspectFill" Source="{Binding Imagen}"
                                                WidthRequest="125"
                                                HeightRequest="125"/>
                                         <VerticalStackLayout
                                             VerticalOptions="Center"
                                             Grid.Column="1"
-                                            Padding="10">
-                                            <Label Text="{Binding Nombre}" />
-                                            <Label Text="{Binding MessageBackedUp}" />
+                                            Padding="10, 0">
+                                            <Label FontSize="16" Text="Nombre:" />
+                                            <Label FontSize="14" Text="{Binding Nombre}" />
+                                            <Label FontSize="6" Text=""/>
+                                            <Label FontSize="16" Text="Fecha de Acceso:" />
+                                            <Label FontSize="14" Text="{Binding UltimaFechaAcceso}" />
+                                        </VerticalStackLayout>
+                                        <VerticalStackLayout
+                                            VerticalOptions="Center"
+                                            Grid.Column="2"
+                                            Padding="0">
+                                            <Label FontSize="16" Text="Grupos:" />
+                                            <Label FontSize="14" Text="{Binding GruposTexto}" />
+                                        </VerticalStackLayout>
+                                        <VerticalStackLayout
+                                            VerticalOptions="Center"
+                                            Grid.Column="3"
+                                            Padding="0">
+                                            <Label FontSize="18" Text="Respaldo:"/>
+                                            <Label FontSize="14" Text="{Binding MessageBackedUp}"/>
                                         </VerticalStackLayout>
                                     </Grid>
                                 </Frame>

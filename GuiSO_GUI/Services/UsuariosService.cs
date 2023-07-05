@@ -11,9 +11,9 @@ public class UsuariosService
     public UsuariosService()
     {
         this._usuarioModels = new();
-        _usuarioModels.Add(new UsuarioModel("Usuario1", true));
-        _usuarioModels.Add(new UsuarioModel("Usuario2", false));
-        _usuarioModels.Add(new UsuarioModel("Usuario3", true));
+        _usuarioModels.Add(new UsuarioModel("Usuario1", true, new []{"Grupo1", "Administradores", "Grupo2"}, "10 Jun 2023"));
+        _usuarioModels.Add(new UsuarioModel("Usuario2", false, new []{"Grupo2", "Usuarios", "Grupo3"}, "5 Mar 2023"));
+        _usuarioModels.Add(new UsuarioModel("Usuario3", true, new []{"Grupo1", "Trabajadores"}, "2 Jul 2023"));
     }
     
     public async Task<List<UsuarioModel>> GetUsuarios()

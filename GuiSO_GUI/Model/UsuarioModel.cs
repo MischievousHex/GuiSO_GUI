@@ -2,9 +2,21 @@
 
 public class UsuarioModel
 {
+
     public string Nombre { get; set; }
     public bool IsBackedUp { get; set; }
     public string Imagen { get; set; }
+    public string[] Grupos { get; set; }
+    public string UltimaFechaAcceso { get; set; }
+    
+    public UsuarioModel(string nombre, bool isBackedUp, string[] grupos, string ultimaFechaAcceso)
+    {
+        Nombre = nombre;
+        IsBackedUp = isBackedUp;
+        Imagen = "pochy.jpg";
+        Grupos = grupos;
+        UltimaFechaAcceso = ultimaFechaAcceso;
+    }
     
     public string MessageBackedUp{
         get
@@ -15,12 +27,8 @@ public class UsuarioModel
         }
     }
 
-    public UsuarioModel(string nombre, bool isBackedUp)
-    {
-        this.Nombre = nombre;
-        this.Imagen = "https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/baboon.jpg";
-        this.IsBackedUp = isBackedUp;
-    }
+    public string GruposTexto => String.Join(", ", this.Grupos);
+    
 
     public override string ToString()
     {

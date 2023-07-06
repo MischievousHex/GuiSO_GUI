@@ -36,7 +36,7 @@ public static class FileSystemService
             string targetFilePath = Path.Combine(destinationDir, file.Name);
             try
             {
-                file.CopyTo(targetFilePath);
+                file.CopyTo(targetFilePath, true);
             }
             catch (Exception e)
             {

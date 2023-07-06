@@ -8,6 +8,8 @@
              x:DataType="viewmodel:UsuariosViewModel"
              Title="{Binding Title}">
     <ContentPage.Content>
+        
+        <ScrollView>
         <VerticalStackLayout
             Padding="0, 20, 0,0">
             
@@ -75,5 +77,6 @@
                     HorizontalOptions="Center"/>
             
         </VerticalStackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

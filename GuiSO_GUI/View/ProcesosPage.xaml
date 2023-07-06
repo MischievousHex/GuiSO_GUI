@@ -10,6 +10,7 @@
              Title="{Binding Title}">
     <ContentPage.Content>
         
+        <ScrollView>
         <VerticalStackLayout
             Padding="0, 20, 0,0">
             
@@ -90,6 +91,6 @@
             </HorizontalStackLayout>
             
         </VerticalStackLayout>
-        
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -34,7 +34,15 @@ public static class FileSystemService
         foreach (FileInfo file in dir.GetFiles())
         {
             string targetFilePath = Path.Combine(destinationDir, file.Name);
-            file.CopyTo(targetFilePath);
+            try
+            {
+                file.CopyTo(targetFilePath);
+            }
+            catch (Exception e)
+            {
+                Shell.Current.DisplayAlert("Error al copiar archivo", e.Message, "OK");
+                Console.WriteLine(e);
+            }
         }
 
         // If recursive and copying subdirectories, recursively call this method

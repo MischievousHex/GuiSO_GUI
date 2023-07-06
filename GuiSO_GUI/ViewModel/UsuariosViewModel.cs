@@ -7,7 +7,6 @@ namespace GuiSO_GUI.ViewModel;
 
 public partial class UsuariosViewModel : BaseViewModel
 {
-    
     public ObservableCollection<UsuarioModel> UsuarioModels { get; } = new();
     private UsuariosService _usuariosService;
 

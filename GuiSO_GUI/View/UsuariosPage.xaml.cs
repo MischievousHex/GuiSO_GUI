@@ -14,4 +14,9 @@ public partial class UsuariosPage : ContentPage
         InitializeComponent();
         BindingContext = viewModel;
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+    }
 }

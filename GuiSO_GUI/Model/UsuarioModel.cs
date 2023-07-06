@@ -41,11 +41,16 @@ public class UsuarioModel : ObservableObject
     }
 
     private bool isBackUpQueued;
-
     public bool IsBackUpQueued
     {
         get => isBackUpQueued;
-        set => SetProperty(ref isBackUpQueued, value);
+        set
+        {
+            SetProperty(ref isBackUpQueued, value);
+            if (value)
+                SetProperty(ref messageBackedUp, "No se encontró una copia de seguridad.");
+            else SetProperty(ref messageBackedUp, "Se encontró una copia de seguridad.");
+        }
     }
     
     
@@ -58,17 +63,21 @@ public class UsuarioModel : ObservableObject
         UltimaFechaAcceso = ultimaFechaAcceso;
         IsBackUpQueued = false;
     }
-    
-    public string MessageBackedUp{
-        get
-        {
-            if (IsBackedUp)
-                return $"Copia de seguridad encontrada";
-            return $"Copia de seguridad no encontrada";
-        }
+
+    private string messageBackedUp;
+    public string MessageBackedUp
+    {
+        get => messageBackedUp;
+        set => SetProperty(ref messageBackedUp, value);
     }
 
-    public string GruposTexto => String.Join(", ", this.Grupos);
+    private string gruposTexto;
+
+    // TODO esto no se sincroniza creo
+    public string GruposTexto
+    {
+        get => String.Join(", ", this.Grupos);
+    }
     
 
     public override string ToString()

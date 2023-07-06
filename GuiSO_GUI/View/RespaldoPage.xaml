@@ -40,7 +40,7 @@
                                             Grid.Column="1"
                                             Padding="10">
                                             <Label Text="{Binding Nombre}" />
-                                            <Label Text="{Binding MessageBackedUp}" />
+                                            <Label Text="{Binding IsBackedUp}" />
                                         </VerticalStackLayout>
                                         <VerticalStackLayout
                                             Grid.Column="2">

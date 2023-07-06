@@ -84,7 +84,7 @@
                         HorizontalOptions="Center"/>
             
                 <Button Text="Matar Seleccionados"
-                        Command="{Binding PauseProcessesCommand}"
+                        Command="{Binding KillProcessesCommand}"
                         IsEnabled="{Binding IsNotBusy}"
                         Margin="20"
                         HorizontalOptions="Center"/>

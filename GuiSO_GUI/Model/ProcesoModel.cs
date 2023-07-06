@@ -52,6 +52,13 @@ public class ProcesoModel : ObservableObject
         set => SetProperty(ref isPaused, value);
     }
 
+    private bool isDead;
+    public bool IsDead
+    {
+        get => isDead;
+        set => SetProperty(ref isDead, value);
+    }
+
     private bool isPauseScheduled;
     public bool IsPauseScheduled
     {

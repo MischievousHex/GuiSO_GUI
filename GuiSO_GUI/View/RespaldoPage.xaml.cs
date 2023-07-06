@@ -24,9 +24,5 @@ public partial class RespaldoPage : ContentPage
     {
         Shell.Current.GoToAsync($"..", true);
     }
-
-    private void RespaldarBtn_OnClicked(object sender, EventArgs e)
-    {
-        
-    }
+    
 }

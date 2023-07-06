@@ -44,6 +44,27 @@ public class ProcesoModel : ObservableObject
         Estado = estado;
     }
 
+    private bool isPaused;
+    public bool IsPaused
+    {
+        get => isPaused;
+        set => SetProperty(ref isPaused, value);
+    }
+
+    private bool isPauseScheduled;
+    public bool IsPauseScheduled
+    {
+        get => isPauseScheduled;
+        set => SetProperty(ref isPauseScheduled, value);
+    }
+    
+    private bool isKillScheduled;
+    public bool IsKillScheduled
+    {
+        get => isKillScheduled;
+        set => SetProperty(ref isKillScheduled, value);
+    }
+
     public override string ToString()
     {
         return $"{nameof(Nombre)}: {Nombre}, {nameof(PId)}: {PId}, {nameof(Cpu)}: {Cpu}, {nameof(Estado)}: {Estado}";

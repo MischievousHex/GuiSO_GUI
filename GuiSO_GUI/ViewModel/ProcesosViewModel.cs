@@ -42,5 +42,36 @@ public partial class ProcesosViewModel : BaseViewModel
             IsBusy = false;
         }
     }
+
+    [RelayCommand]
+    async Task PauseProcesses(ProcesoModel proceso)
+    {
+        if(IsBusy)
+            return;
+        try
+        {
+            IsBusy = true;
+            foreach (var procesoModel in ProcesoModels)
+            {
+                if (procesoModel.IsPauseScheduled)
+                {
+                    procesoModel.IsPaused = true;
+                    procesoModel.IsPauseScheduled = false;
+                }
+            }
+
+            IsBusy = false;
+            await GetProcesos();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"No se pudo pausar el proceso: {ex.Message}");
+            await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
     
 }

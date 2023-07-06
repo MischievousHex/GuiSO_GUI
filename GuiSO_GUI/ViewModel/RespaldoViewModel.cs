@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.Input;
+using GuiSO_GUI.GUIHandlers;
 using GuiSO_GUI.Model;
 using GuiSO_GUI.Services;
 
@@ -56,7 +57,7 @@ public partial class RespaldoViewModel : BaseViewModel
             {
                 if (usuarioModel.IsBackUpQueued)
                 {
-                    usuarioModel.IsBackedUp = true;
+                    usuarioModel.IsBackedUp = BackUpHandlerGUI.MakeBackUp(usuarioModel.Nombre);
                     usuarioModel.IsBackUpQueued = false;
                 }
             }

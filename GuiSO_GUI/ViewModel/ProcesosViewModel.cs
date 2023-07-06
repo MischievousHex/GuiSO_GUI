@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Diagnostics;
 using CommunityToolkit.Mvvm.Input;
 using GuiSO_GUI.Model;
 using GuiSO_GUI.Services;
@@ -67,6 +68,40 @@ public partial class ProcesosViewModel : BaseViewModel
         catch (Exception ex)
         {
             Console.WriteLine($"No se pudo pausar el proceso: {ex.Message}");
+            await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
+    
+    [RelayCommand]
+    async Task KillProcesses(ProcesoModel proceso)
+    {
+        if(IsBusy)
+            return;
+        try
+        {
+            IsBusy = true;
+            foreach (var procesoModel in ProcesoModels)
+            {
+                if (procesoModel.IsKillScheduled)
+                {
+                    procesoModel.IsKillScheduled = false;
+                    Process coso = Process.GetProcessById(Int32.Parse(procesoModel.PId));
+                    coso.Kill();
+                    coso.WaitForExit();
+                    coso.Dispose();
+                }
+            }
+
+            IsBusy = false;
+            await GetProcesos();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"No se pudo matar el proceso: {ex.Message}");
             await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
         }
         finally

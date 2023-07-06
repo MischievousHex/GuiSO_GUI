@@ -44,7 +44,7 @@ public class SystemManagementHandler
             procesoModels.Add(new ProcesoModel(process));
         }
 
-        return procesoModels;
+        return procesoModels.Where(procesoM => !procesoM.IsDead).ToList();
     }
     
 }

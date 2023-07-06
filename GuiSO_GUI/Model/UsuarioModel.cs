@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using GuiSO_GUI.Services;
 
 namespace GuiSO_GUI.Model;
 
@@ -59,7 +60,7 @@ public class UsuarioModel : ObservableObject
         Random rnd = new Random();
         int sopasPercent = rnd.Next(0, 25);
         Nombre = nombre;
-        IsBackedUp = isBackedUp;
+        IsBackedUp = FileSystemService.DirectoryExists($"C:\\CAMP_BACKUP\\{Nombre}");
         Imagen = (sopasPercent == 1) ? "sopas.jpeg" : "user.png";
         Grupos = grupos;
         UltimaFechaAcceso = ultimaFechaAcceso;

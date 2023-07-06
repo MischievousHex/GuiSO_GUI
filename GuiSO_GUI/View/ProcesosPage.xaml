@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:GuiSO_GUI.Model"
              xmlns:viewmodel="clr-namespace:GuiSO_GUI.ViewModel"
@@ -31,7 +32,7 @@
                         <DataTemplate x:DataType="model:ProcesoModel">
                             <Grid Padding="10">
                                 <Frame HeightRequest="125">
-                                    <Grid Padding="0" ColumnDefinitions="125,*" VerticalOptions="Center">
+                                    <Grid Padding="0" ColumnDefinitions="125,*, 125, 125" VerticalOptions="Center">
                                         <Image Aspect="AspectFill" Source="gear.png"
                                                WidthRequest="50"
                                                HeightRequest="50"/>
@@ -44,6 +45,18 @@
                                             <Label Text="{Binding CpuText}"/>
                                             <Label Text="{Binding EstadoText}"/>
                                         </VerticalStackLayout>
+                                        <VerticalStackLayout
+                                            Grid.Column="2">
+                                            <Label Text="Pausar"/>
+                                            <CheckBox
+                                                IsChecked="{Binding IsPauseScheduled}"/>
+                                        </VerticalStackLayout>
+                                        <VerticalStackLayout
+                                            Grid.Column="3">
+                                            <Label Text="Matar"></Label>
+                                            <CheckBox
+                                                IsChecked="{Binding IsKillScheduled}"/>
+                                        </VerticalStackLayout>
                                     </Grid>
                                 </Frame>
                             </Grid>
@@ -53,12 +66,28 @@
             
             </Grid>
             
-            <Button Text="Actualizar Lista" 
-                    Command="{Binding GetProcesosCommand}"
-                    IsEnabled="{Binding IsNotBusy}"
-                    Margin="20"
-                    Padding="20"
-                    HorizontalOptions="Center"/>
+            <HorizontalStackLayout
+                Padding="20"
+                HorizontalOptions="Center">
+                
+                <Button Text="Actualizar Lista" 
+                        Command="{Binding GetProcesosCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Margin="20"
+                        HorizontalOptions="Center"/>
+            
+                <Button Text="Pausar Seleccionados"
+                        Command="{Binding PauseProcessesCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Margin="20"
+                        HorizontalOptions="Center"/>
+            
+                <Button Text="Matar Seleccionados"
+                        Command="{Binding PauseProcessesCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Margin="20"
+                        HorizontalOptions="Center"/>
+            </HorizontalStackLayout>
             
         </VerticalStackLayout>
         

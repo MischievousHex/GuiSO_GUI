@@ -23,13 +23,14 @@ public partial class ProcesosViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            var procesos = await _procesosService.GetProcesos();
+            var procesos = _procesosService.GetProcesos();
 
             if(ProcesoModels.Count != 0)
                 ProcesoModels.Clear();
                 
             foreach(var proceso in procesos)
-                ProcesoModels.Add(proceso);
+                if(ProcesoModels.Count < 100 && !proceso.Nombre.Equals("svchost"))
+                    ProcesoModels.Add(proceso);
 
         }
         catch (Exception ex)

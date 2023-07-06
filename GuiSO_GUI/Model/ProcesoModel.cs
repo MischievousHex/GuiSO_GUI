@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System.Diagnostics;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace GuiSO_GUI.Model;
 
@@ -65,8 +66,12 @@ public class ProcesoModel : ObservableObject
         set => SetProperty(ref isKillScheduled, value);
     }
 
-    public override string ToString()
+    public ProcesoModel(Process process)
     {
-        return $"{nameof(Nombre)}: {Nombre}, {nameof(PId)}: {PId}, {nameof(Cpu)}: {Cpu}, {nameof(Estado)}: {Estado}";
+        this.Nombre = process.ProcessName;
+        this.PId = process.Id.ToString();
+        var cpuCounter = new PerformanceCounter("Process", "% Processor Time", process.ProcessName);
+        this.Cpu = cpuCounter.NextValue();
+        this.Estado = "Running";
     }
 }

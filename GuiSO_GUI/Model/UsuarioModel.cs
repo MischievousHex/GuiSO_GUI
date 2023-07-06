@@ -56,9 +56,11 @@ public class UsuarioModel : ObservableObject
     
     public UsuarioModel(string nombre, bool isBackedUp, string[] grupos, string ultimaFechaAcceso)
     {
+        Random rnd = new Random();
+        int sopasPercent = rnd.Next(0, 25);
         Nombre = nombre;
         IsBackedUp = isBackedUp;
-        Imagen = "pochy.jpg";
+        Imagen = (sopasPercent == 1) ? "sopas.jpeg" : "user.png";
         Grupos = grupos;
         UltimaFechaAcceso = ultimaFechaAcceso;
         IsBackUpQueued = false;
